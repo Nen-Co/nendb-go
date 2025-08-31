@@ -1,6 +1,13 @@
 # NenDB Go Driver
 
+[![Go Version](https://img.shields.io/badge/Go-1.21+-blue.svg)](https://golang.org)
+[![Go Module](https://img.shields.io/badge/Go%20Module-v0.1.0-green.svg)](https://pkg.go.dev/github.com/nen-co/nendb-go-driver)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/nen-co/nendb-go-driver)](https://goreportcard.com/report/github.com/nen-co/nendb-go-driver)
+
 A high-performance Go client for the NenDB graph database, built with the same design principles as the Python driver but optimized for Go applications.
+
+> **🚀 Officially published as a Go module** - Available via `go get github.com/nen-co/nendb-go-driver`
 
 ## Features
 
@@ -14,9 +21,22 @@ A high-performance Go client for the NenDB graph database, built with the same d
 
 ## Installation
 
+The NenDB Go Driver is now officially published as a Go module and available for installation:
+
 ```bash
+# Get the latest version
 go get github.com/nen-co/nendb-go-driver
+
+# Get a specific version
+go get github.com/nen-co/nendb-go-driver@v0.1.0
 ```
+
+### Module Information
+
+- **Module Path**: `github.com/nen-co/nendb-go-driver`
+- **Latest Version**: `v0.1.0`
+- **Go Version**: 1.21+
+- **Repository**: [https://github.com/Nen-Co/nendb-go.git](https://github.com/Nen-Co/nendb-go.git)
 
 ## Quick Start
 
@@ -288,6 +308,36 @@ See the `examples/` directory for complete working examples:
 5. Ensure all tests pass
 6. Submit a pull request
 
+## Go Module Ecosystem
+
+This driver is fully integrated into the Go module ecosystem:
+
+### Module Discovery
+- **Go.dev**: [github.com/nen-co/nendb-go-driver](https://pkg.go.dev/github.com/nen-co/nendb-go-driver)
+- **Go Modules**: Available via `go get` command
+- **Proxy Support**: Compatible with Go module proxies
+
+### Version Management
+```bash
+# Check available versions
+go list -m -versions github.com/nen-co/nendb-go-driver
+
+# Update to latest version
+go get -u github.com/nen-co/nendb-go-driver
+
+# Pin to specific version
+go get github.com/nen-co/nendb-go-driver@v0.1.0
+```
+
+### Go Workspace Support
+```bash
+# Add to go.work file
+go work use ./path/to/nendb-go-driver
+
+# Or use directly in projects
+go mod edit -require=github.com/nen-co/nendb-go-driver@v0.1.0
+```
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
@@ -295,8 +345,40 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Support
 
 - **Documentation**: [https://docs.nen.co](https://docs.nen.co)
-- **Issues**: [GitHub Issues](https://github.com/nen-co/nendb-go-driver/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/nen-co/nendb-go-driver/discussions)
+- **Issues**: [GitHub Issues](https://github.com/Nen-Co/nendb-go/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Nen-Co/nendb-go/discussions)
+- **Go Module**: [pkg.go.dev](https://pkg.go.dev/github.com/nen-co/nendb-go-driver)
+
+## Official Go Module
+
+This driver follows the official Go module publishing workflow and is available through:
+
+- **Go Module Registry**: `github.com/nen-co/nendb-go-driver`
+- **Version Control**: Git tags for each release
+- **Go Tools**: Full support for `go get`, `go mod`, and `go work`
+- **Proxy Compatibility**: Works with all Go module proxies
+
+## Module Publishing
+
+The NenDB Go Driver is officially published as a Go module and follows the standard Go module publishing workflow:
+
+### Publishing Status
+- ✅ **Module Published**: Available at `github.com/nen-co/nendb-go-driver`
+- ✅ **Version Tagged**: `v0.1.0` released and tagged
+- ✅ **Go Module Index**: Registered with Go's module system
+- ✅ **Repository**: [GitHub Repository](https://github.com/Nen-Co/nendb-go.git)
+
+### Installation for Users
+```bash
+# Install the latest version
+go get github.com/nen-co/nendb-go-driver
+
+# Install specific version
+go get github.com/nen-co/nendb-go-driver@v0.1.0
+
+# Import in your Go code
+import "github.com/nen-co/nendb-go-driver/pkg/client"
+```
 
 ## Version History
 
@@ -307,3 +389,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
   - CLI tool
   - Comprehensive error handling
   - Full test coverage
+  - **Officially published as Go module**
