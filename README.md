@@ -40,6 +40,38 @@ go get github.com/nen-co/nendb-go-driver@v0.1.0
 
 ## Quick Start
 
+### Prerequisites
+
+Before using the Go driver, you need to have the NenDB server running. The NenDB server is built in Zig and provides the HTTP API that the Go driver connects to.
+
+#### Running NenDB Server
+
+1. **Clone the NenDB repository**:
+   ```bash
+   git clone https://github.com/Nen-Co/nen-db.git
+   cd nen-db
+   ```
+
+2. **Build the server**:
+   ```bash
+   zig build
+   ```
+
+3. **Run the server**:
+   ```bash
+   # Run with default configuration (port 8080)
+   ./zig-out/bin/nendb
+   
+   # Or run the server directly
+   zig build run
+   ```
+
+4. **Verify server is running**:
+   ```bash
+   curl http://localhost:8080/health
+   # Should return: {"status": "healthy", "service": "nendb", "version": "0.0.1"}
+   ```
+
 ### Basic Usage
 
 ```go
@@ -57,7 +89,7 @@ import (
 func main() {
     // Create client configuration
     config := &client.ClientConfig{
-        BaseURL:    "http://localhost:8080",
+        BaseURL:    "http://localhost:8080", // NenDB server address
         Timeout:    30 * time.Second,
         MaxRetries: 3,
     }
@@ -187,6 +219,60 @@ params := map[string]interface{}{
 result, err = client.Query(ctx, "MATCH (n:Person) WHERE n.age > $minAge RETURN n LIMIT $limit", params)
 ```
 
+## NenDB Server Integration
+
+The Go driver connects to the NenDB server, which is built in Zig and provides a high-performance HTTP API for graph database operations.
+
+### Server Architecture
+
+- **Language**: Built in Zig for maximum performance
+- **HTTP API**: RESTful endpoints for all operations
+- **Port**: Default 8080 (configurable)
+- **Memory**: Statically allocated with efficient memory management
+- **Networking**: Uses custom nen-net library for high-performance I/O
+
+### Available API Endpoints
+
+The NenDB server provides these endpoints that the Go driver uses:
+
+#### Health & Status
+- `GET /health` - Server health check
+- `GET /statistics` - Database statistics
+
+#### Graph Operations
+- `GET /nodes/{id}` - Retrieve node by ID
+- `POST /nodes` - Create new node
+- `PUT /nodes/{id}` - Update existing node
+- `DELETE /nodes/{id}` - Delete node
+
+- `GET /edges/{id}` - Retrieve edge by ID
+- `POST /edges` - Create new edge
+- `PUT /edges/{id}` - Update existing edge
+- `DELETE /edges/{id}` - Delete edge
+
+#### Algorithms
+- `POST /algorithms/bfs` - Breadth-First Search
+- `POST /algorithms/dijkstra` - Shortest Path (Dijkstra)
+- `POST /algorithms/pagerank` - PageRank algorithm
+
+#### Query
+- `POST /query` - Execute custom Cypher-like queries
+
+### Server Configuration
+
+The NenDB server can be configured with various options:
+
+```bash
+# Run with custom port
+zig build run -- --port 9090
+
+# Run with custom host
+zig build run -- --host 127.0.0.1
+
+# Run with custom buffer size
+zig build run -- --buffer-size 16384
+```
+
 ## CLI Usage
 
 The driver includes a command-line interface for testing and administration:
@@ -291,6 +377,48 @@ See the `examples/` directory for complete working examples:
 
 - `basic_usage.go` - Basic client operations
 - Additional examples coming soon
+
+### Development Workflow
+
+When developing with the Go driver and NenDB server:
+
+1. **Start the NenDB server** in one terminal:
+   ```bash
+   cd nen-db
+   zig build run
+   ```
+
+2. **Run your Go application** in another terminal:
+   ```bash
+   cd your-go-project
+   go run main.go
+   ```
+
+3. **Test the integration**:
+   ```bash
+   # Test server health
+   curl http://localhost:8080/health
+   
+   # Test Go driver
+   go test ./...
+   ```
+
+### Testing with NenDB Server
+
+The Go driver includes tests that can run against a live NenDB server:
+
+```bash
+# Set environment variable to skip health check in tests
+export NENDB_SKIP_HEALTH=true
+
+# Run tests
+go test ./...
+
+# Or run specific package tests
+go test ./pkg/client
+go test ./pkg/types
+go test ./pkg/errors
+```
 
 ## Performance Considerations
 
