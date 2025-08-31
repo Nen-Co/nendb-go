@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/nen-co/nendb-go-driver/pkg/errors"
-	"github.com/nen-co/nendb-go-driver/pkg/types"
+	"github.com/nen-co/nendb-go/pkg/errors"
+	"github.com/nen-co/nendb-go/pkg/types"
 )
 
 // ClientConfig holds configuration for the NenDB client

@@ -1,13 +1,13 @@
 # NenDB Go Driver
 
 [![Go Version](https://img.shields.io/badge/Go-1.21+-blue.svg)](https://golang.org)
-[![Go Module](https://img.shields.io/badge/Go%20Module-v0.1.0-green.svg)](https://pkg.go.dev/github.com/nen-co/nendb-go-driver)
+[![Go Module](https://img.shields.io/badge/Go%20Module-v0.1.0-green.svg)](https://pkg.go.dev/github.com/nen-co/nendb-go)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Go Report Card](https://goreportcard.com/badge/github.com/nen-co/nendb-go-driver)](https://goreportcard.com/report/github.com/nen-co/nendb-go-driver)
+[![Go Report Card](https://goreportcard.com/badge/github.com/nen-co/nendb-go)](https://goreportcard.com/report/github.com/nen-co/nendb-go)
 
 A high-performance Go client for the NenDB graph database, built with the same design principles as the Python driver but optimized for Go applications.
 
-> **🚀 Officially published as a Go module** - Available via `go get github.com/nen-co/nendb-go-driver`
+> **🚀 Officially published as a Go module** - Available via `go get github.com/nen-co/nendb-go`
 
 ## Features
 
@@ -25,15 +25,15 @@ The NenDB Go Driver is now officially published as a Go module and available for
 
 ```bash
 # Get the latest version
-go get github.com/nen-co/nendb-go-driver
+go get github.com/nen-co/nendb-go
 
 # Get a specific version
-go get github.com/nen-co/nendb-go-driver@v0.1.0
+go get github.com/nen-co/nendb-go@v0.1.0
 ```
 
 ### Module Information
 
-- **Module Path**: `github.com/nen-co/nendb-go-driver`
+- **Module Path**: `github.com/nen-co/nendb-go`
 - **Latest Version**: `v0.1.0`
 - **Go Version**: 1.21+
 - **Repository**: [https://github.com/Nen-Co/nendb-go.git](https://github.com/Nen-Co/nendb-go.git)
@@ -448,22 +448,22 @@ This driver is fully integrated into the Go module ecosystem:
 ### Version Management
 ```bash
 # Check available versions
-go list -m -versions github.com/nen-co/nendb-go-driver
+go list -m -versions github.com/nen-co/nendb-go
 
 # Update to latest version
-go get -u github.com/nen-co/nendb-go-driver
+go get -u github.com/nen-co/nendb-go
 
 # Pin to specific version
-go get github.com/nen-co/nendb-go-driver@v0.1.0
+go get github.com/nen-co/nendb-go@v0.1.0
 ```
 
 ### Go Workspace Support
 ```bash
 # Add to go.work file
-go work use ./path/to/nendb-go-driver
+go work use ./path/to/nendb-go
 
 # Or use directly in projects
-go mod edit -require=github.com/nen-co/nendb-go-driver@v0.1.0
+go mod edit -require=github.com/nen-co/nendb-go@v0.1.0
 ```
 
 ## License
@@ -475,13 +475,13 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - **Documentation**: [https://docs.nen.co](https://docs.nen.co)
 - **Issues**: [GitHub Issues](https://github.com/Nen-Co/nendb-go/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/Nen-Co/nendb-go/discussions)
-- **Go Module**: [pkg.go.dev](https://pkg.go.dev/github.com/nen-co/nendb-go-driver)
+- **Go Module**: [pkg.go.dev](https://pkg.go.dev/github.com/nen-co/nendb-go)
 
 ## Official Go Module
 
 This driver follows the official Go module publishing workflow and is available through:
 
-- **Go Module Registry**: `github.com/nen-co/nendb-go-driver`
+- **Go Module Registry**: `github.com/nen-co/nendb-go`
 - **Version Control**: Git tags for each release
 - **Go Tools**: Full support for `go get`, `go mod`, and `go work`
 - **Proxy Compatibility**: Works with all Go module proxies
@@ -491,7 +491,7 @@ This driver follows the official Go module publishing workflow and is available 
 The NenDB Go Driver is officially published as a Go module and follows the standard Go module publishing workflow:
 
 ### Publishing Status
-- ✅ **Module Published**: Available at `github.com/nen-co/nendb-go-driver`
+- ✅ **Module Published**: Available at `github.com/nen-co/nendb-go`
 - ✅ **Version Tagged**: `v0.1.0` released and tagged
 - ✅ **Go Module Index**: Registered with Go's module system
 - ✅ **Repository**: [GitHub Repository](https://github.com/Nen-Co/nendb-go.git)
@@ -499,13 +499,13 @@ The NenDB Go Driver is officially published as a Go module and follows the stand
 ### Installation for Users
 ```bash
 # Install the latest version
-go get github.com/nen-co/nendb-go-driver
+go get github.com/nen-co/nendb-go
 
 # Install specific version
-go get github.com/nen-co/nendb-go-driver@v0.1.0
+go get github.com/nen-co/nendb-go@v0.1.0
 
 # Import in your Go code
-import "github.com/nen-co/nendb-go-driver/pkg/client"
+import "github.com/nen-co/nendb-go/pkg/client"
 ```
 
 ## Version History

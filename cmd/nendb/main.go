@@ -9,7 +9,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/nen-co/nendb-go-driver/pkg/client"
+	"github.com/nen-co/nendb-go/pkg/client"
 )
 
 const version = "0.1.0"

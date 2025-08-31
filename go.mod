@@ -1,3 +1,3 @@
-module github.com/nen-co/nendb-go-driver
+module github.com/nen-co/nendb-go
 
 go 1.21

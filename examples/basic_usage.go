@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/nen-co/nendb-go-driver/pkg/client"
+	"github.com/nen-co/nendb-go/pkg/client"
 )
 
 func main() {
