@@ -25,6 +25,8 @@ A high-performance Go client for the NenDB graph database, built with the same d
 
 Before using the Go driver, you need to have the NenDB server running. Here are the quickest ways to get started:
 
+> **📖 For complete installation details, see the [Official NenDB Documentation](https://nen-co.github.io/docs/nendb)**
+
 #### Linux/macOS (Quick Install)
 ```bash
 curl -fsSL https://github.com/Nen-Co/nen-db/releases/latest/download/nen-linux-x86_64.tar.gz | tar -xz
@@ -36,12 +38,12 @@ Invoke-WebRequest -Uri "https://github.com/Nen-Co/nen-db/releases/latest/downloa
 Expand-Archive -Path "nen-windows.zip" -DestinationPath "."
 ```
 
-#### 🐳 Docker (Recommended)
+#### 🐳 Docker (Optional)
 ```bash
-# Pull and run with HTTP server on port 8080
-docker run --rm -p 8080:8080 --name nendb \
-  -v $(pwd)/data:/data \
-  ghcr.io/nen-co/nendb:latest
+# Pull and run with HTTP server on port 9000
+docker run --rm -p 9000:9000 --name nendb \
+  -v $(pwd)/data:/var/lib/nendb \
+  nenco/nendb:latest ./nendb serve
 ```
 
 #### 🧪 Build from Source
@@ -54,7 +56,12 @@ zig build
 
 ### ✅ Verify Server is Running
 ```bash
+# For static binary (port 8080)
 curl http://localhost:8080/health
+
+# For Docker (port 9000)
+curl http://localhost:9000/health
+
 # Should return: {"status": "healthy", "service": "nendb", "version": "0.0.1"}
 ```
 
@@ -122,39 +129,12 @@ go get github.com/nen-co/nendb-go@v0.1.0
 - **Go Version**: 1.21+
 - **Repository**: [https://github.com/Nen-Co/nendb-go.git](https://github.com/Nen-Co/nendb-go.git)
 
-## Quick Start
+## 📚 **Documentation & Resources**
 
-### Prerequisites
-
-Before using the Go driver, you need to have the NenDB server running. The NenDB server is built in Zig and provides the HTTP API that the Go driver connects to.
-
-#### Running NenDB Server
-
-1. **Clone the NenDB repository**:
-   ```bash
-   git clone https://github.com/Nen-Co/nen-db.git
-   cd nen-db
-   ```
-
-2. **Build the server**:
-   ```bash
-   zig build
-   ```
-
-3. **Run the server**:
-   ```bash
-   # Run with default configuration (port 8080)
-   ./zig-out/bin/nendb
-   
-   # Or run the server directly
-   zig build run
-   ```
-
-4. **Verify server is running**:
-   ```bash
-   curl http://localhost:8080/health
-   # Should return: {"status": "healthy", "service": "nendb", "version": "0.0.1"}
-   ```
+- **📖 Official NenDB Documentation**: [https://nen-co.github.io/docs/nendb](https://nen-co.github.io/docs/nendb)
+- **🔗 GitHub Repository**: [https://github.com/Nen-Co/nen-db](https://github.com/Nen-Co/nen-db)
+- **🐍 Python Driver**: [https://github.com/Nen-Co/nendb-python-driver](https://github.com/Nen-Co/nendb-python-driver)
+- **💬 Community**: [GitHub Discussions](https://github.com/Nen-Co/nen-db/discussions)
 
 ### Basic Usage
 
@@ -307,6 +287,8 @@ result, err = client.Query(ctx, "MATCH (n:Person) WHERE n.age > $minAge RETURN n
 
 The Go driver connects to the NenDB server, which is built in Zig and provides a high-performance HTTP API for graph database operations.
 
+> **📖 For complete server documentation, see the [Official NenDB Documentation](https://nen-co.github.io/docs/nendb)**
+
 ### Server Architecture
 
 - **Language**: Built in Zig for maximum performance
@@ -419,7 +401,7 @@ export NENDB_MAX_RETRIES=5
 The driver provides comprehensive error types:
 
 ```go
-import "github.com/nen-co/nendb-go-driver/pkg/errors"
+import "github.com/nen-co/nendb-go/pkg/errors"
 
 // Check error types
 if connErr, ok := err.(*errors.NenDBConnectionError); ok {
@@ -525,7 +507,7 @@ go test ./pkg/errors
 This driver is fully integrated into the Go module ecosystem:
 
 ### Module Discovery
-- **Go.dev**: [github.com/nen-co/nendb-go-driver](https://pkg.go.dev/github.com/nen-co/nendb-go-driver)
+- **Go.dev**: [github.com/nen-co/nendb-go](https://pkg.go.dev/github.com/nen-co/nendb-go)
 - **Go Modules**: Available via `go get` command
 - **Proxy Support**: Compatible with Go module proxies
 
@@ -556,10 +538,10 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Support
 
-- **Documentation**: [https://docs.nen.co](https://docs.nen.co)
-- **Issues**: [GitHub Issues](https://github.com/Nen-Co/nendb-go/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Nen-Co/nendb-go/discussions)
-- **Go Module**: [pkg.go.dev](https://pkg.go.dev/github.com/nen-co/nendb-go)
+- **📖 Official NenDB Documentation**: [https://nen-co.github.io/docs/nendb](https://nen-co.github.io/docs/nendb)
+- **🔗 GitHub Issues**: [GitHub Issues](https://github.com/Nen-Co/nendb-go/issues)
+- **💬 Community**: [GitHub Discussions](https://github.com/Nen-Co/nendb-go/discussions)
+- **📦 Go Module**: [pkg.go.dev](https://pkg.go.dev/github.com/nen-co/nendb-go)
 
 ## Official Go Module
 
