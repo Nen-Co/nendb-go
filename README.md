@@ -19,6 +19,90 @@ A high-performance Go client for the NenDB graph database, built with the same d
 - **Type Safety**: Strong typing with validation for all graph entities
 - **CLI Tool**: Command-line interface for testing and administration
 
+## 🚀 Quick Start
+
+### 📦 NenDB Server Installation
+
+Before using the Go driver, you need to have the NenDB server running. Here are the quickest ways to get started:
+
+#### Linux/macOS (Quick Install)
+```bash
+curl -fsSL https://github.com/Nen-Co/nen-db/releases/latest/download/nen-linux-x86_64.tar.gz | tar -xz
+```
+
+#### Windows PowerShell
+```powershell
+Invoke-WebRequest -Uri "https://github.com/Nen-Co/nen-db/releases/latest/download/nen-windows-x86_64.zip" -OutFile "nen-windows.zip"
+Expand-Archive -Path "nen-windows.zip" -DestinationPath "."
+```
+
+#### 🐳 Docker (Recommended)
+```bash
+# Pull and run with HTTP server on port 8080
+docker run --rm -p 8080:8080 --name nendb \
+  -v $(pwd)/data:/data \
+  ghcr.io/nen-co/nendb:latest
+```
+
+#### 🧪 Build from Source
+```bash
+git clone https://github.com/Nen-Co/nen-db.git
+cd nen-db
+zig build
+./zig-out/bin/nendb
+```
+
+### ✅ Verify Server is Running
+```bash
+curl http://localhost:8080/health
+# Should return: {"status": "healthy", "service": "nendb", "version": "0.0.1"}
+```
+
+### 🚀 Install Go Driver
+```bash
+go get github.com/nen-co/nendb-go
+```
+
+### 💻 Basic Usage Example
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "log"
+    "time"
+
+    "github.com/nen-co/nendb-go/pkg/client"
+)
+
+func main() {
+    // Create client
+    client, err := client.NewClient(&client.ClientConfig{
+        BaseURL: "http://localhost:8080",
+    })
+    if err != nil {
+        log.Fatalf("Failed to create client: %v", err)
+    }
+
+    // Check server health
+    if err := client.Health(); err != nil {
+        log.Fatalf("Health check failed: %v", err)
+    }
+
+    // Create a node
+    node, err := client.CreateNode(context.Background(), []string{"Person"}, map[string]interface{}{
+        "name": "Alice",
+        "age":  30,
+    })
+    if err != nil {
+        log.Fatalf("Failed to create node: %v", err)
+    }
+
+    fmt.Printf("Created node with ID: %d\n", node.ID)
+}
+```
+
 ## Installation
 
 The NenDB Go Driver is now officially published as a Go module and available for installation:
@@ -83,7 +167,7 @@ import (
     "log"
     "time"
 
-    "github.com/nen-co/nendb-go-driver/pkg/client"
+    "github.com/nen-co/nendb-go/pkg/client"
 )
 
 func main() {
